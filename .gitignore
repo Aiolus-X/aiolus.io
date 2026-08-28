@@ -1,0 +1,7 @@
+# Local visual references; not required by the deployed website.
+front-page.png
+secondpage.png
+
+# Local development artifacts.
+*.log
+.DS_Store
