@@ -105,12 +105,11 @@
   document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
   function setupIntroCanvas() {
-    const context = introCanvas.getContext("2d", { alpha: false });
+    const context = introCanvas.getContext("2d");
     let width = 0;
     let height = 0;
     let dpr = 1;
     let stars = [];
-    let dust = [];
 
     function random(seed) {
       const x = Math.sin(seed * 999.91) * 43758.5453;
@@ -136,74 +135,47 @@
         speed: random(index + 193) * 0.0007 + 0.0002,
       }));
 
-      dust = Array.from({ length: 90 }, (_, index) => ({
-        angle: random(index + 253) * Math.PI * 2,
-        distance: random(index + 303) * Math.min(width, height) * 0.42,
-        size: random(index + 353) * 1.4 + 0.2,
-        alpha: random(index + 403) * 0.24,
-      }));
     }
 
     function drawStars(time, progress) {
       for (const star of stars) {
         const twinkle = 0.6 + Math.sin(time * star.speed + star.x) * 0.4;
-        context.fillStyle = `rgba(205, 225, 239, ${star.alpha * twinkle * (1 - progress)})`;
+        context.fillStyle = `rgba(215, 235, 247, ${star.alpha * twinkle * (1 - progress) * 0.48})`;
         context.beginPath();
         context.arc(star.x, star.y - progress * 20, star.radius, 0, Math.PI * 2);
         context.fill();
       }
     }
 
-    function drawEarth(progress) {
-      const horizonY = height * (0.835 + progress * 0.13);
-      const earthHeight = Math.max(220, height * 0.38);
-      const centerY = horizonY + earthHeight;
-      const radiusX = width * (0.72 + progress * 0.15);
-      const radiusY = earthHeight;
-
-      const earth = context.createRadialGradient(
-        width * 0.5,
-        horizonY + earthHeight * 0.1,
-        0,
-        width * 0.5,
-        centerY,
-        radiusX,
-      );
-      earth.addColorStop(0, "rgba(29, 47, 59, 0.96)");
-      earth.addColorStop(0.2, "rgba(9, 17, 24, 0.98)");
-      earth.addColorStop(0.72, "#020406");
-      earth.addColorStop(1, "#010203");
+    function drawAtmosphere(time, progress) {
+      const horizonY = height * (0.87 + progress * 0.055);
+      const lift = Math.sin(time * 0.0007) * 0.7;
 
       context.save();
       context.beginPath();
-      context.ellipse(width / 2, centerY, radiusX, radiusY, 0, Math.PI, Math.PI * 2);
-      context.closePath();
-      context.fillStyle = earth;
-      context.fill();
-
-      context.clip();
-      for (const particle of dust) {
-        const px = width / 2 + Math.cos(particle.angle) * particle.distance * 1.9;
-        const py = horizonY + 18 + Math.sin(particle.angle) * particle.distance * 0.19;
-        context.fillStyle = `rgba(159, 190, 206, ${particle.alpha * (1 - progress)})`;
-        context.fillRect(px, py, particle.size * 1.8, particle.size * 0.55);
-      }
+      context.moveTo(-width * 0.05, horizonY + height * 0.05);
+      context.quadraticCurveTo(width * 0.5, horizonY - 4 + lift, width * 1.05, horizonY + height * 0.05);
+      context.strokeStyle = `rgba(196, 235, 252, ${0.2 + progress * 0.18})`;
+      context.lineWidth = 0.8 + progress * 3.5;
+      context.shadowColor = "rgba(127, 203, 240, 0.85)";
+      context.shadowBlur = 12 + progress * 24;
+      context.stroke();
       context.restore();
 
-      const atmosphere = context.createLinearGradient(0, horizonY - 12, 0, horizonY + 28);
-      atmosphere.addColorStop(0, "rgba(221, 244, 255, 0)");
-      atmosphere.addColorStop(0.38, `rgba(220, 246, 255, ${0.9 - progress * 0.25})`);
-      atmosphere.addColorStop(0.52, `rgba(126, 192, 226, ${0.46 - progress * 0.2})`);
-      atmosphere.addColorStop(1, "rgba(61, 101, 128, 0)");
-
+      const verticalBeam = context.createLinearGradient(0, horizonY - height * 0.36, 0, horizonY + 10);
+      verticalBeam.addColorStop(0, "rgba(126, 205, 244, 0)");
+      verticalBeam.addColorStop(0.7, `rgba(151, 218, 249, ${0.018 + progress * 0.075})`);
+      verticalBeam.addColorStop(1, `rgba(237, 251, 255, ${0.1 + progress * 0.16})`);
       context.save();
+      context.translate(width / 2, 0);
       context.beginPath();
-      context.ellipse(width / 2, centerY, radiusX, radiusY, 0, Math.PI, Math.PI * 2);
-      context.strokeStyle = atmosphere;
-      context.lineWidth = 2.2 + progress * 6;
-      context.shadowColor = "rgba(184, 229, 255, 0.9)";
-      context.shadowBlur = 12 + progress * 35;
-      context.stroke();
+      context.moveTo(-width * (0.018 + progress * 0.17), horizonY + 4);
+      context.lineTo(width * (0.018 + progress * 0.17), horizonY + 4);
+      context.lineTo(width * (0.105 + progress * 0.15), horizonY - height * 0.38);
+      context.lineTo(-width * (0.105 + progress * 0.15), horizonY - height * 0.38);
+      context.closePath();
+      context.fillStyle = verticalBeam;
+      context.fill();
       context.restore();
 
       return horizonY;
@@ -249,18 +221,17 @@
       const elapsed = transitionStarted ? time - transitionStart : 0;
       const progress = transitionStarted ? Math.min(1, elapsed / 1750) : 0;
 
-      context.fillStyle = "#010204";
-      context.fillRect(0, 0, width, height);
+      context.clearRect(0, 0, width, height);
 
       const ambient = context.createRadialGradient(width / 2, height * 0.8, 0, width / 2, height * 0.8, width * 0.65);
-      ambient.addColorStop(0, `rgba(29, 67, 94, ${0.09 + progress * 0.19})`);
+      ambient.addColorStop(0, `rgba(41, 105, 146, ${0.08 + progress * 0.2})`);
       ambient.addColorStop(0.42, "rgba(13, 31, 45, 0.035)");
       ambient.addColorStop(1, "rgba(0, 0, 0, 0)");
       context.fillStyle = ambient;
       context.fillRect(0, 0, width, height);
 
       drawStars(time, progress);
-      const horizonY = drawEarth(progress);
+      const horizonY = drawAtmosphere(time, progress);
       drawSun(horizonY, time, progress);
 
       if (!intro.classList.contains("is-complete")) requestAnimationFrame(render);

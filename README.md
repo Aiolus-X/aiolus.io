@@ -16,6 +16,8 @@ Open <http://localhost:8000>.
 - `styles.css` — responsive layout, brand system, and transitions
 - `app.js` — Canvas animations and interaction
 - `logo.png` and `aiolus.png` — temporary emblem and wordmark supplied for the first visual pass
+- `assets/visuals/earth-horizon-v2.webp` — splash-screen orbital photograph, NASA image `ISS073-E-0118626`
+- `assets/visuals/earth-clouds-v2.webp` — lower-atmosphere cloud detail, NASA image `ISS048-E-002082`
 - `assets/branding/` — earlier brand explorations retained for reference
 
 The introductory scene supports click, mouse wheel, upward swipe, Enter, Space, Arrow Down, and Page Down.
