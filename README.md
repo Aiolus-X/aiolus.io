@@ -18,6 +18,8 @@ Open <http://localhost:8000>.
 - `logo.png` and `aiolus.png` — temporary emblem and wordmark supplied for the first visual pass
 - `assets/visuals/earth-horizon-v2.webp` — splash-screen orbital photograph, NASA image `ISS073-E-0118626`
 - `assets/visuals/earth-clouds-v2.webp` — lower-atmosphere cloud detail, NASA image `ISS048-E-002082`
+- `assets/visuals/planet-night-v3.webp` — giant planet treatment built from NASA Blue Marble `GSFC_20171208_Archive_e002130`
+- The intro slogan is “Decode the Universe, Encode a New One”; the supporting line is intentionally bilingual and can be edited in `index.html`.
 - `assets/branding/` — earlier brand explorations retained for reference
 
 The introductory scene supports click, mouse wheel, upward swipe, Enter, Space, Arrow Down, and Page Down.
