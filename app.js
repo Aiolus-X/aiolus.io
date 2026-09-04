@@ -126,24 +126,56 @@
       introCanvas.style.height = `${height}px`;
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const starCount = Math.min(260, Math.floor((width * height) / 7000));
-      stars = Array.from({ length: starCount }, (_, index) => ({
-        x: random(index + 3) * width,
-        y: random(index + 43) * height * 0.76,
-        radius: random(index + 93) * 0.75 + 0.12,
-        alpha: random(index + 133) * 0.38 + 0.05,
-        speed: random(index + 193) * 0.0007 + 0.0002,
-      }));
+      const starCount = Math.min(620, Math.floor((width * height) / 3500));
+      const clusters = [
+        { x: 0.14, y: 0.2, spreadX: 0.2, spreadY: 0.13 },
+        { x: 0.52, y: 0.1, spreadX: 0.24, spreadY: 0.09 },
+        { x: 0.84, y: 0.24, spreadX: 0.19, spreadY: 0.15 },
+      ];
+
+      stars = Array.from({ length: starCount }, (_, index) => {
+        const clustered = random(index + 17) > 0.34;
+        const cluster = clusters[Math.floor(random(index + 29) * clusters.length)];
+        const cloudX = (random(index + 31) + random(index + 37) + random(index + 41)) / 3 - 0.5;
+        const cloudY = (random(index + 47) + random(index + 53) + random(index + 59)) / 3 - 0.5;
+        const x = clustered ? cluster.x + cloudX * cluster.spreadX * 2 : random(index + 3);
+        const y = clustered ? cluster.y + cloudY * cluster.spreadY * 2 : random(index + 43) * 0.54;
+
+        return {
+          x: Math.max(0.015, Math.min(0.985, x)) * width,
+          y: Math.max(0.015, Math.min(0.58, y)) * height,
+          radius: random(index + 93) ** 2 * 1.35 + 0.16,
+          alpha: random(index + 133) * 0.62 + 0.14,
+          speed: random(index + 193) * 0.001 + 0.00022,
+          gold: random(index + 211) > 0.84,
+          spark: random(index + 227) > 0.965,
+        };
+      });
 
     }
 
     function drawStars(time, progress) {
       for (const star of stars) {
-        const twinkle = 0.6 + Math.sin(time * star.speed + star.x) * 0.4;
-        context.fillStyle = `rgba(215, 235, 247, ${star.alpha * twinkle * (1 - progress) * 0.48})`;
+        const twinkle = 0.62 + Math.sin(time * star.speed + star.x) * 0.38;
+        const opacity = star.alpha * twinkle * (1 - progress * 0.82);
+        const color = star.gold ? `rgba(241, 211, 147, ${opacity * 0.82})` : `rgba(220, 237, 244, ${opacity})`;
+        context.fillStyle = color;
         context.beginPath();
         context.arc(star.x, star.y - progress * 20, star.radius, 0, Math.PI * 2);
         context.fill();
+
+        if (star.spark) {
+          context.save();
+          context.strokeStyle = star.gold ? `rgba(246, 218, 155, ${opacity * 0.65})` : `rgba(226, 242, 248, ${opacity * 0.6})`;
+          context.lineWidth = 0.45;
+          context.beginPath();
+          context.moveTo(star.x - 5, star.y);
+          context.lineTo(star.x + 5, star.y);
+          context.moveTo(star.x, star.y - 5);
+          context.lineTo(star.x, star.y + 5);
+          context.stroke();
+          context.restore();
+        }
       }
     }
 
@@ -181,26 +213,27 @@
       return horizonY;
     }
 
-    function drawSun(horizonY, time, progress) {
+    function drawBrandTransition(time, progress) {
+      if (progress <= 0.001) return;
+
       const pulse = 1 + Math.sin(time * 0.0012) * 0.08;
-      const baseRadius = Math.max(3.5, Math.min(width, height) * 0.006) * pulse;
-      const radius = baseRadius + Math.pow(progress, 2.2) * Math.max(width, height) * 0.62;
-      const glowRadius = Math.max(120, width * 0.12) + progress * width * 0.75;
+      const radius = Math.pow(progress, 2.2) * Math.max(width, height) * 0.64 * pulse;
+      const glowRadius = Math.max(80, width * 0.1) + progress * width * 0.78;
       const centerX = width / 2;
-      const centerY = horizonY - 1;
+      const centerY = height * (width < 700 ? 0.1 : 0.065);
 
       const glow = context.createRadialGradient(centerX, centerY, 0, centerX, centerY, glowRadius);
-      glow.addColorStop(0, `rgba(255, 255, 255, ${0.98 - progress * 0.1})`);
-      glow.addColorStop(0.04, `rgba(219, 244, 255, ${0.82 + progress * 0.1})`);
-      glow.addColorStop(0.17, `rgba(135, 203, 239, ${0.25 + progress * 0.24})`);
-      glow.addColorStop(0.5, `rgba(85, 155, 193, ${0.07 + progress * 0.14})`);
-      glow.addColorStop(1, "rgba(26, 73, 105, 0)");
+      glow.addColorStop(0, `rgba(255, 255, 255, ${progress * 0.92})`);
+      glow.addColorStop(0.04, `rgba(255, 241, 202, ${progress * 0.84})`);
+      glow.addColorStop(0.17, `rgba(211, 177, 105, ${progress * 0.34})`);
+      glow.addColorStop(0.5, `rgba(111, 139, 148, ${progress * 0.13})`);
+      glow.addColorStop(1, "rgba(45, 62, 66, 0)");
       context.fillStyle = glow;
       context.fillRect(0, 0, width, height);
 
       context.save();
-      context.fillStyle = `rgba(255, 255, 255, ${Math.max(0, 1 - progress * 0.34)})`;
-      context.shadowColor = "white";
+      context.fillStyle = `rgba(255, 250, 231, ${Math.min(1, progress * 1.4)})`;
+      context.shadowColor = "rgba(255, 235, 181, 0.96)";
       context.shadowBlur = 25 + progress * 80;
       context.beginPath();
       context.arc(centerX, centerY, radius, 0, Math.PI * 2);
@@ -208,11 +241,11 @@
       context.restore();
 
       const horizontalFlare = context.createLinearGradient(0, 0, width, 0);
-      horizontalFlare.addColorStop(0, "rgba(181, 225, 248, 0)");
-      horizontalFlare.addColorStop(0.37, `rgba(201, 237, 255, ${0.04 + progress * 0.16})`);
-      horizontalFlare.addColorStop(0.5, `rgba(255, 255, 255, ${0.58 + progress * 0.25})`);
-      horizontalFlare.addColorStop(0.63, `rgba(201, 237, 255, ${0.04 + progress * 0.16})`);
-      horizontalFlare.addColorStop(1, "rgba(181, 225, 248, 0)");
+      horizontalFlare.addColorStop(0, "rgba(215, 191, 135, 0)");
+      horizontalFlare.addColorStop(0.37, `rgba(234, 218, 179, ${progress * 0.2})`);
+      horizontalFlare.addColorStop(0.5, `rgba(255, 255, 255, ${progress * 0.82})`);
+      horizontalFlare.addColorStop(0.63, `rgba(234, 218, 179, ${progress * 0.2})`);
+      horizontalFlare.addColorStop(1, "rgba(215, 191, 135, 0)");
       context.fillStyle = horizontalFlare;
       context.fillRect(0, centerY - 0.5, width, 1 + progress * 5);
     }
@@ -231,8 +264,8 @@
       context.fillRect(0, 0, width, height);
 
       drawStars(time, progress);
-      const horizonY = drawAtmosphere(time, progress);
-      drawSun(horizonY, time, progress);
+      drawAtmosphere(time, progress);
+      drawBrandTransition(time, progress);
 
       if (!intro.classList.contains("is-complete")) requestAnimationFrame(render);
     }

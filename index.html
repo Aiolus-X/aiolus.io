@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#020407" />
     <title>Aiolus — Advancing Intelligence</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='white' d='M32 4 9 55h12l11-26 12 26h12L32 4Z'/%3E%3C/svg%3E" />
-    <link rel="preload" as="image" href="assets/visuals/aiolus-digital-planet-v4.webp" type="image/webp" />
+    <link rel="preload" as="image" href="assets/visuals/aiolus-gold-silver-planet-v5.webp" type="image/webp" />
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
@@ -19,7 +19,7 @@
 
     <section id="intro" class="intro" aria-label="Aiolus introduction">
       <div class="intro__space-scene" aria-hidden="true">
-        <img src="assets/visuals/aiolus-digital-planet-v4.webp" alt="" />
+        <img src="assets/visuals/aiolus-gold-silver-planet-v5.webp" alt="" />
       </div>
       <div class="intro__planet-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="intro__data-scan" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -30,6 +30,7 @@
       <div id="light-wash" class="intro__light-wash" aria-hidden="true"></div>
 
       <div class="intro__brand">
+        <span class="intro__brand-flare" aria-hidden="true"></span>
         <svg class="intro__emblem" viewBox="0 0 954 442" role="img" aria-label="Aiolus emblem">
           <defs>
             <mask id="intro-emblem-mask" maskUnits="userSpaceOnUse" style="mask-type: luminance">
@@ -37,9 +38,10 @@
             </mask>
             <linearGradient id="intro-emblem-metal" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0" stop-color="#ffffff" />
-              <stop offset="0.48" stop-color="#c4c9ce" />
-              <stop offset="0.72" stop-color="#ffffff" />
-              <stop offset="1" stop-color="#747c84" />
+              <stop offset="0.32" stop-color="#d9dde0" />
+              <stop offset="0.56" stop-color="#b99a5e" />
+              <stop offset="0.72" stop-color="#fff6d7" />
+              <stop offset="1" stop-color="#858b90" />
             </linearGradient>
           </defs>
           <rect width="954" height="442" fill="url(#intro-emblem-metal)" mask="url(#intro-emblem-mask)" />
@@ -52,8 +54,9 @@
             </mask>
             <linearGradient id="intro-wordmark-metal" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#ffffff" />
-              <stop offset="0.52" stop-color="#b9bec4" />
-              <stop offset="0.76" stop-color="#f7f8f9" />
+              <stop offset="0.42" stop-color="#d5d8da" />
+              <stop offset="0.64" stop-color="#b79a61" />
+              <stop offset="0.78" stop-color="#fff8df" />
               <stop offset="1" stop-color="#8e959c" />
             </linearGradient>
           </defs>
@@ -63,7 +66,7 @@
 
       <div class="intro__copy">
         <p class="intro__tagline">DECODE THE UNIVERSE,<br />ENCODE A NEW ONE</p>
-        <p class="intro__subline">pioneering the future of ai — and leading the ai revolution</p>
+        <p class="intro__subline">pioneering the future of AI — and leading the AI revolution</p>
       </div>
 
       <button id="enter-button" class="enter-button" type="button" aria-label="Enter the Aiolus website">
