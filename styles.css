@@ -100,123 +100,131 @@ button {
 .intro__space-scene {
   position: absolute;
   z-index: 0;
-  inset: -3%;
+  inset: 0;
   overflow: hidden;
   opacity: 0;
-  transform: scale(1.035);
+  transform: scale(1.025);
   animation: space-arrival 2.8s var(--ease-out) 120ms forwards;
   transition: opacity 1.1s ease, transform 2.1s var(--ease-out), filter 2.1s ease;
   will-change: transform, filter, opacity;
 }
 
-.intro__giant-planet {
+.intro__space-scene::before {
   position: absolute;
   z-index: 1;
-  left: 50%;
-  bottom: -106%;
-  width: min(120vw, 1400px);
-  overflow: hidden;
-  border-radius: 50%;
-  aspect-ratio: 1;
-  transform: translateX(-50%) scale(0.96);
-  opacity: 0;
-  animation: planet-arrival 2.8s var(--ease-out) 280ms forwards;
-  transition: opacity 1.2s ease, transform 2.1s var(--ease-out), filter 2.1s ease;
-  will-change: transform, filter, opacity;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 1, 3, 0.78) 0%, rgba(0, 2, 5, 0.48) 27%, transparent 58%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 48%, rgba(0, 4, 8, 0.06));
+  content: "";
+  pointer-events: none;
 }
 
-.intro__giant-planet::before {
+.intro__space-scene::after {
   position: absolute;
   z-index: 2;
-  inset: 0.8%;
-  border: 1px solid rgba(173, 226, 253, 0.5);
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(108, 196, 237, 0.62), inset 0 0 28px rgba(141, 207, 238, 0.2);
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 51%, rgba(205, 243, 255, 0.09), transparent 12%),
+    radial-gradient(ellipse at 50% 52%, transparent 0 36%, rgba(0, 0, 0, 0.18) 69%, rgba(0, 0, 0, 0.62) 100%);
   content: "";
   pointer-events: none;
 }
 
-.intro__giant-planet::after {
+.intro__space-scene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  filter: contrast(1.08) saturate(0.72) brightness(0.9);
+}
+
+@keyframes space-arrival {
+  from { opacity: 0; transform: scale(1.09); filter: blur(8px); }
+  to { opacity: 1; transform: scale(1.025); filter: blur(0); }
+}
+
+.intro.is-entering .intro__space-scene {
+  opacity: 1;
+  filter: brightness(1.24) blur(1.1px);
+  transform: scale(1.14) translateY(2.5%);
+}
+
+.intro__data-scan {
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 42% 28%, rgba(220, 243, 255, 0.16), transparent 21%),
-    radial-gradient(circle at 64% 60%, rgba(0, 3, 8, 0.72), transparent 46%),
-    linear-gradient(110deg, transparent 36%, rgba(2, 8, 15, 0.6) 78%);
-  content: "";
+  z-index: 2;
+  inset: 47% 0 auto;
+  height: 33%;
+  overflow: hidden;
   pointer-events: none;
+  opacity: 0.34;
+  clip-path: ellipse(78% 92% at 50% 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 78%);
 }
 
-.intro__planet-grid {
+.intro__data-scan::before {
   position: absolute;
-  z-index: 3;
   inset: 0;
-  border-radius: 50%;
   background:
-    repeating-radial-gradient(ellipse at 50% 47%, transparent 0 5.7%, rgba(110, 206, 255, 0.19) 5.85%, transparent 6.1%),
-    repeating-linear-gradient(84deg, transparent 0 8.2%, rgba(98, 190, 239, 0.12) 8.32%, transparent 8.5%),
-    repeating-linear-gradient(-72deg, transparent 0 11.7%, rgba(138, 216, 251, 0.09) 11.82%, transparent 12%);
-  opacity: 0.72;
-  mix-blend-mode: screen;
-  mask-image: radial-gradient(ellipse at 50% 52%, black 0 67%, transparent 82%);
-  animation: planet-grid-drift 22s linear infinite;
-}
-
-.intro__planet-grid::before {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(165, 231, 255, 0.54) 0 0.8px, transparent 1.2px);
-  background-size: 16px 16px;
+    repeating-linear-gradient(0deg, transparent 0 18px, rgba(151, 221, 250, 0.1) 19px, transparent 20px),
+    repeating-linear-gradient(86deg, transparent 0 7.5vw, rgba(126, 211, 247, 0.075) calc(7.5vw + 1px), transparent calc(7.5vw + 2px));
   content: "";
-  opacity: 0.48;
-  mask-image: radial-gradient(ellipse at 50% 50%, black 0 56%, transparent 78%);
+  transform: perspective(520px) rotateX(67deg) scale(1.25);
+  transform-origin: center top;
+  animation: data-grid-flow 11s linear infinite;
 }
 
-.intro__planet-scan {
+.intro__data-scan i {
   position: absolute;
-  z-index: 4;
-  left: -12%;
-  top: 20%;
-  width: 124%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(148, 225, 255, 0.05) 18%, rgba(184, 239, 255, 0.75) 50%, rgba(148, 225, 255, 0.05) 82%, transparent);
-  box-shadow: 0 0 16px rgba(134, 219, 255, 0.45);
-  opacity: 0.66;
-  mix-blend-mode: screen;
-  animation: planet-scan 8s ease-in-out infinite;
+  left: 50%;
+  top: 4%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(232, 250, 255, 0.95);
+  box-shadow: 0 0 8px #dff8ff, 0 0 26px rgba(101, 207, 250, 0.9);
+  animation: data-node 4.8s ease-in-out infinite;
 }
 
-@keyframes planet-grid-drift { to { transform: rotate(360deg) scale(1.03); } }
-@keyframes planet-scan { 0%, 100% { transform: translateY(0); opacity: 0.16; } 50% { transform: translateY(46%); opacity: 0.8; } }
+.intro__data-scan i:nth-child(2) { left: 73%; top: 39%; animation-delay: -1.4s; }
+.intro__data-scan i:nth-child(3) { left: 29%; top: 58%; animation-delay: -3.2s; }
+
+@keyframes data-grid-flow { to { transform: perspective(520px) rotateX(67deg) translateY(20px) scale(1.25); } }
+@keyframes data-node { 50% { opacity: 0.25; transform: scale(0.55); } }
 
 .intro__planet-orbits {
   position: absolute;
   z-index: 2;
   left: 50%;
-  bottom: -62%;
-  width: min(130vw, 1540px);
-  aspect-ratio: 1;
+  top: 51.5%;
+  width: min(135vw, 1900px);
+  height: min(38vw, 540px);
   pointer-events: none;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  opacity: 0.48;
+  mix-blend-mode: screen;
 }
 
 .intro__planet-orbits i {
   position: absolute;
-  inset: 9%;
-  border: 1px solid rgba(126, 208, 244, 0.12);
+  inset: 18% 2%;
+  border: 1px solid rgba(160, 226, 252, 0.12);
   border-radius: 50%;
-  transform: rotateX(68deg) rotateZ(-8deg);
+  transform: rotate(-2.5deg);
+  animation: orbit-breathe 7s ease-in-out infinite;
 }
 
-.intro__planet-orbits i:nth-child(2) { inset: 19%; transform: rotateX(69deg) rotateZ(30deg); }
-.intro__planet-orbits i:nth-child(3) { inset: -2%; transform: rotateX(72deg) rotateZ(63deg); border-color: rgba(130, 214, 253, 0.08); }
+.intro__planet-orbits i:nth-child(2) { inset: 31% 13%; transform: rotate(4deg); animation-delay: -2.3s; }
+.intro__planet-orbits i:nth-child(3) { inset: 5% -8%; transform: rotate(-7deg); border-color: rgba(130, 214, 253, 0.07); animation-delay: -4.5s; }
+
+@keyframes orbit-breathe { 50% { opacity: 0.42; transform: rotate(1deg) scale(1.025); } }
 
 .intro__copy {
   position: absolute;
   z-index: 5;
   left: clamp(24px, 7vw, 112px);
-  top: 41%;
+  top: 37%;
   width: min(560px, 42vw);
   animation: copy-arrival 1.6s var(--ease-out) 500ms both;
   transition: opacity 600ms ease, transform 1.1s var(--ease-out), filter 800ms ease;
@@ -233,115 +241,22 @@ button {
   transform: translateY(-34px);
 }
 
-.intro__giant-planet img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: contrast(1.08) brightness(0.98) drop-shadow(0 -12px 35px rgba(99, 191, 235, 0.28));
-}
-
-@keyframes planet-arrival {
-  from { opacity: 0; transform: translateX(-50%) scale(1.08); filter: blur(10px); }
-  to { opacity: 0.94; transform: translateX(-50%) scale(0.96); filter: blur(0); }
-}
-
-.intro.is-entering .intro__giant-planet {
-  opacity: 1;
-  filter: brightness(1.24) blur(1px);
-  transform: translateX(-50%) scale(1.12) translateY(5%);
-}
-
-.intro__space-scene::after {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 86%, rgba(157, 219, 250, 0.12), transparent 22%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent 58%, rgba(0, 5, 9, 0.1));
-  content: "";
-}
-
-.intro__space-scene img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
-  filter: grayscale(0.48) saturate(0.46) contrast(1.3) brightness(0.68);
-}
-
-@keyframes space-arrival {
-  from { opacity: 0; transform: scale(1.1); filter: blur(7px); }
-  to { opacity: 1; transform: scale(1.035); filter: blur(0); }
-}
-
-.intro.is-entering .intro__space-scene {
-  opacity: 0.88;
-  filter: brightness(1.18) blur(1.5px);
-  transform: scale(1.18) translateY(-1.8%);
-}
-
-.intro__earth-detail {
-  position: absolute;
-  z-index: 1;
-  right: -7%;
-  bottom: -9%;
-  left: -7%;
-  height: 34%;
-  overflow: hidden;
-  opacity: 0;
-  clip-path: ellipse(70% 100% at 50% 100%);
-  mix-blend-mode: screen;
-  animation: earth-detail-arrival 2.8s var(--ease-out) 420ms forwards;
-  transition: opacity 1.2s ease, transform 2.1s var(--ease-out), filter 2.1s ease;
-  transform: scale(1.02);
-}
-
-.intro__earth-detail::after {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.86), rgba(0, 10, 17, 0.25) 32%, rgba(0, 0, 0, 0.05) 62%),
-    radial-gradient(ellipse at 50% 0%, rgba(156, 219, 248, 0.14), transparent 54%);
-  content: "";
-}
-
-.intro__earth-detail img {
-  position: absolute;
-  inset: -83% 0 auto;
-  width: 100%;
-  height: 210%;
-  object-fit: cover;
-  object-position: center 54%;
-  filter: grayscale(0.82) saturate(0.24) contrast(1.45) brightness(0.43);
-}
-
-@keyframes earth-detail-arrival {
-  from { opacity: 0; transform: scale(1.08) translateY(4%); }
-  to { opacity: 0.56; transform: scale(1.02) translateY(0); }
-}
-
-.intro.is-entering .intro__earth-detail {
-  opacity: 0.72;
-  filter: brightness(1.22) blur(1px);
-  transform: scale(1.14) translateY(5%);
-}
-
 .intro__cinematic {
   position: absolute;
   z-index: 1;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 46%, transparent 0 28%, rgba(0, 0, 0, 0.12) 58%, rgba(0, 0, 0, 0.7) 100%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.08) 48%, rgba(0, 5, 9, 0.04) 78%, rgba(0, 0, 0, 0.22) 100%);
+    radial-gradient(ellipse at 50% 51%, transparent 0 25%, rgba(0, 0, 0, 0.08) 57%, rgba(0, 0, 0, 0.62) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0.03) 48%, rgba(0, 3, 7, 0.02) 74%, rgba(0, 0, 0, 0.2) 100%);
 }
 
 .intro__lens {
   position: absolute;
   z-index: 2;
   left: 50%;
-  top: 87%;
-  width: min(54vw, 820px);
+  top: 51.5%;
+  width: min(62vw, 920px);
   aspect-ratio: 2.8;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -397,7 +312,7 @@ button {
 .intro__light-wash {
   z-index: 4;
   left: 50%;
-  top: 83%;
+  top: 51.5%;
   width: 20vmin;
   height: 20vmin;
   border-radius: 50%;
@@ -424,7 +339,7 @@ button {
   position: absolute;
   z-index: 3;
   left: 50%;
-  top: 24%;
+  top: 21.5%;
   display: flex;
   width: min(50vw, 700px);
   flex-direction: column;
@@ -518,6 +433,9 @@ button {
   inset: 0;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 50%;
+  background: rgba(1, 5, 9, 0.28);
+  box-shadow: inset 0 0 18px rgba(143, 220, 252, 0.035), 0 0 30px rgba(63, 166, 211, 0.08);
+  backdrop-filter: blur(6px);
   transition: transform 600ms var(--ease-out), border-color 400ms ease, background 400ms ease;
 }
 
@@ -1347,7 +1265,7 @@ button {
 @media (max-width: 900px) {
   :root { --header-height: 72px; }
 
-  .intro__brand { top: 25%; width: min(72vw, 620px); }
+  .intro__brand { top: 22%; width: min(72vw, 620px); }
   .intro__hint { display: none; }
 
   .site-header { padding: 0 24px; }
@@ -1427,16 +1345,15 @@ button {
 }
 
 @media (max-width: 600px) {
-  .intro__space-scene { inset: -2% -30%; }
+  .intro__space-scene { inset: 0; }
+  .intro__space-scene::before { background: linear-gradient(180deg, rgba(0, 1, 3, 0.38), transparent 45%, rgba(0, 0, 0, 0.05)); }
   .intro__space-scene img { object-position: center bottom; }
-  .intro__giant-planet { bottom: -34%; width: 150vw; }
-  .intro__planet-orbits { bottom: -30%; width: 164vw; }
-  .intro__earth-detail { right: -45%; bottom: -7%; left: -45%; height: 31%; }
-  .intro__earth-detail img { inset: -68% 0 auto; }
-  .intro__lens { top: 86%; width: 92vw; }
-  .intro__brand { top: 27%; width: 78vw; }
+  .intro__planet-orbits { top: 51%; width: 210vw; height: 70vw; }
+  .intro__data-scan { inset: 48% -32% auto; height: 28%; opacity: 0.25; }
+  .intro__lens { top: 51%; width: 112vw; }
+  .intro__brand { top: 18.5%; width: 78vw; }
   .intro__emblem { width: 100px; margin-bottom: 4px; }
-  .intro__copy { left: 24px; top: 47%; width: calc(100vw - 48px); }
+  .intro__copy { left: 24px; top: 34%; width: calc(100vw - 48px); }
   .intro__tagline { font-size: clamp(19px, 6.3vw, 27px); }
   .intro__subline { max-width: 88vw; font-size: 9px; letter-spacing: .035em; }
   .enter-button { bottom: 55px; width: 68px; height: 68px; }

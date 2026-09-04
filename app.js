@@ -148,13 +148,13 @@
     }
 
     function drawAtmosphere(time, progress) {
-      const horizonY = height * (0.87 + progress * 0.055);
+      const horizonY = height * (0.515 + progress * 0.035);
       const lift = Math.sin(time * 0.0007) * 0.7;
 
       context.save();
       context.beginPath();
       context.moveTo(-width * 0.05, horizonY + height * 0.05);
-      context.quadraticCurveTo(width * 0.5, horizonY - 4 + lift, width * 1.05, horizonY + height * 0.05);
+      context.quadraticCurveTo(width * 0.5, horizonY - 4 + lift, width * 1.05, horizonY + height * 0.075);
       context.strokeStyle = `rgba(196, 235, 252, ${0.2 + progress * 0.18})`;
       context.lineWidth = 0.8 + progress * 3.5;
       context.shadowColor = "rgba(127, 203, 240, 0.85)";
@@ -162,7 +162,7 @@
       context.stroke();
       context.restore();
 
-      const verticalBeam = context.createLinearGradient(0, horizonY - height * 0.36, 0, horizonY + 10);
+      const verticalBeam = context.createLinearGradient(0, horizonY - height * 0.3, 0, horizonY + 10);
       verticalBeam.addColorStop(0, "rgba(126, 205, 244, 0)");
       verticalBeam.addColorStop(0.7, `rgba(151, 218, 249, ${0.018 + progress * 0.075})`);
       verticalBeam.addColorStop(1, `rgba(237, 251, 255, ${0.1 + progress * 0.16})`);
@@ -171,8 +171,8 @@
       context.beginPath();
       context.moveTo(-width * (0.018 + progress * 0.17), horizonY + 4);
       context.lineTo(width * (0.018 + progress * 0.17), horizonY + 4);
-      context.lineTo(width * (0.105 + progress * 0.15), horizonY - height * 0.38);
-      context.lineTo(-width * (0.105 + progress * 0.15), horizonY - height * 0.38);
+      context.lineTo(width * (0.105 + progress * 0.15), horizonY - height * 0.3);
+      context.lineTo(-width * (0.105 + progress * 0.15), horizonY - height * 0.3);
       context.closePath();
       context.fillStyle = verticalBeam;
       context.fill();
@@ -223,7 +223,7 @@
 
       context.clearRect(0, 0, width, height);
 
-      const ambient = context.createRadialGradient(width / 2, height * 0.8, 0, width / 2, height * 0.8, width * 0.65);
+      const ambient = context.createRadialGradient(width / 2, height * 0.52, 0, width / 2, height * 0.52, width * 0.55);
       ambient.addColorStop(0, `rgba(41, 105, 146, ${0.08 + progress * 0.2})`);
       ambient.addColorStop(0.42, "rgba(13, 31, 45, 0.035)");
       ambient.addColorStop(1, "rgba(0, 0, 0, 0)");
