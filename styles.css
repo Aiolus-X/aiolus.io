@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500&display=swap");
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("assets/fonts/manrope-latin-v20.woff2") format("woff2");
+}
 
 :root {
   color-scheme: dark;
@@ -223,7 +229,7 @@ button {
 .intro__copy {
   position: absolute;
   z-index: 5;
-  left: clamp(24px, 7vw, 112px);
+  left: clamp(20px, 5vw, 76px);
   top: 62%;
   width: min(780px, 57vw);
   animation: copy-arrival 1.6s var(--ease-out) 500ms both;
@@ -417,8 +423,9 @@ button {
 .intro__tagline {
   margin: 0;
   color: rgba(255, 255, 255, 0.99);
+  font-family: "Manrope", "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(36px, 3.85vw, 62px);
-  font-weight: 340;
+  font-weight: 200;
   letter-spacing: 0.035em;
   line-height: 1.14;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.96), 0 0 28px rgba(0, 0, 0, 0.82), 0 0 34px rgba(185, 221, 233, 0.18);
@@ -1397,7 +1404,7 @@ button {
   .intro__brand { top: 16.5%; width: 91vw; }
   .intro__brand-flare { top: -1%; width: 180px; height: 76px; }
   .intro__emblem { width: 140px; margin-bottom: 3px; }
-  .intro__copy { left: 24px; top: 60.5%; width: calc(100vw - 48px); }
+  .intro__copy { left: 16px; top: 60.5%; width: calc(100vw - 32px); }
   .intro__tagline { font-size: clamp(24px, 6.5vw, 28px); letter-spacing: 0; line-height: 1.15; }
   .enter-button { bottom: 42px; width: 84px; height: 84px; }
   .enter-button__label { font-size: 9.5px; }
