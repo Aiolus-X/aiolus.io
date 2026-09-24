@@ -2253,3 +2253,34 @@ html[data-language="zh"] .profile-motto {
   .project-feature__copy p { font-size: 16px; }
   .topic-list span { font-size: 22px; }
 }
+
+/* Final profile hierarchy adjustments. */
+.site-logo {
+  font-size: 14px;
+  letter-spacing: 0.22em;
+}
+
+.site-logo__emblem {
+  width: 58px;
+  height: 35px;
+}
+
+.profile-copy h1 {
+  max-width: 610px;
+  font-size: clamp(38px, 4.3vw, 60px);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.profile-lede {
+  max-width: 620px;
+  margin: 24px 0 36px;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.58;
+}
+
+@media (max-width: 680px) {
+  .site-logo { font-size: 13px; }
+  .site-logo__emblem { width: 50px; height: 31px; }
+  .profile-copy h1 { font-size: clamp(37px, 10vw, 55px); }
+}
