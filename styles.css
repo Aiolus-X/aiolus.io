@@ -2284,3 +2284,139 @@ html[data-language="zh"] .profile-motto {
   .site-logo__emblem { width: 50px; height: 31px; }
   .profile-copy h1 { font-size: clamp(37px, 10vw, 55px); }
 }
+
+/* Vertical academic-homepage flow. */
+.portfolio-layout {
+  width: min(1120px, calc(100% - 56px));
+  margin: 0 auto;
+  padding-top: 128px;
+}
+
+.portfolio-sidebar {
+  padding: 36px 0 86px;
+}
+
+.portfolio-sidebar .profile-visual {
+  max-width: 370px;
+  margin: 0 auto;
+}
+
+.portfolio-scroll {
+  width: 100%;
+}
+
+.portfolio-about {
+  width: 100%;
+  padding: 92px 0 125px;
+  border-top: 1px solid var(--portfolio-border);
+}
+
+.portfolio-about .profile-copy {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.about-title {
+  margin: 0;
+  color: var(--portfolio-ink);
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(50px, 7vw, 82px);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+}
+
+.portfolio-about .profile-lede {
+  max-width: 820px;
+  margin: 32px 0 48px;
+  font-size: clamp(18px, 1.55vw, 22px);
+  line-height: 1.65;
+}
+
+.portfolio-about .profile-facts {
+  gap: 20px;
+}
+
+.portfolio-about .profile-facts li {
+  grid-template-columns: 175px minmax(0, 1fr);
+  gap: 24px;
+  padding: 0 0 19px 25px;
+  border-bottom: 1px solid var(--portfolio-border);
+}
+
+.portfolio-about .profile-facts li::before {
+  top: 0.8em;
+}
+
+.portfolio-about .profile-facts .fact-label {
+  font-size: 12px;
+  letter-spacing: 0.11em;
+}
+
+.portfolio-about .profile-facts .fact-value {
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.portfolio-scroll .portfolio-section,
+.portfolio-scroll .portfolio-footer {
+  width: 100%;
+}
+
+.portfolio-scroll .portfolio-section {
+  padding: 115px 0 135px;
+}
+
+.portfolio-scroll .portfolio-section__heading {
+  margin-bottom: 58px;
+}
+
+.portfolio-scroll .portfolio-section__heading h2 {
+  font-size: clamp(58px, 7vw, 88px);
+}
+
+.portfolio-scroll .portfolio-section__heading > p {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.portfolio-scroll .project-feature__copy p {
+  font-size: 18px;
+}
+
+.portfolio-scroll .project-feature__copy .project-tagline {
+  font-size: 23px;
+}
+
+.portfolio-scroll .project-points li {
+  font-size: 17px;
+}
+
+.portfolio-scroll .research-principles > p,
+.portfolio-scroll .research-note {
+  font-size: 19px;
+}
+
+@media (max-width: 680px) {
+  .portfolio-layout {
+    width: min(100% - 40px, 1120px);
+    padding-top: 92px;
+  }
+
+  .portfolio-sidebar { padding: 20px 0 70px; }
+  .portfolio-sidebar .profile-visual { max-width: min(350px, 84vw); }
+  .portfolio-about { padding: 70px 0 88px; }
+  .about-title { font-size: 58px; }
+  .portfolio-about .profile-lede { font-size: 18px; }
+  .portfolio-about .profile-facts li {
+    display: block;
+    padding-left: 23px;
+  }
+  .portfolio-about .profile-facts .fact-label {
+    margin-bottom: 4px;
+  }
+  .portfolio-about .profile-facts .fact-value { font-size: 17px; }
+  .portfolio-scroll .portfolio-section { padding: 82px 0 98px; }
+  .portfolio-scroll .portfolio-section__heading h2 { font-size: 62px; }
+  .portfolio-scroll .project-feature__copy .project-tagline { font-size: 20px; }
+}
