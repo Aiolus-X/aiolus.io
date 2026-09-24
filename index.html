@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-language="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,8 +7,8 @@
       name="description"
       content="Aiolus — research, intelligent systems, and ambitious ideas built for the future."
     />
-    <meta name="theme-color" content="#020407" />
-    <title>Aiolus — Advancing Intelligence</title>
+    <meta name="theme-color" content="#f7faff" />
+    <title>Aiolus — Research, Systems, and Self-Evolving Agents</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='white' d='M32 4 9 55h12l11-26 12 26h12L32 4Z'/%3E%3C/svg%3E" />
     <link rel="preload" as="image" href="assets/visuals/aiolus-gold-silver-planet-v5.webp" type="image/webp" />
     <link rel="stylesheet" href="styles.css" />
@@ -93,170 +93,90 @@
           <span>AIOLUS</span>
         </a>
 
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-          <span></span><span></span>
-          <span class="sr-only">Toggle navigation</span>
-        </button>
-
-        <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
-          <a href="#research">Research</a>
-          <a href="#projects">Projects</a>
-          <a href="#publications">Publications</a>
-          <a href="#about">About</a>
-          <a class="nav-contact" href="#contact">Contact <span>↗</span></a>
-        </nav>
+        <div class="site-header__tools">
+          <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+            <a href="#research"><span class="lang-en">Research</span><span class="lang-zh">研究</span></a>
+            <a href="#projects"><span class="lang-en">Projects</span><span class="lang-zh">项目</span></a>
+            <a href="#publications" class="nav-future"><span class="lang-en">Publications</span><span class="lang-zh">论文</span></a>
+            <a href="#blogs" class="nav-future"><span class="lang-en">Blogs</span><span class="lang-zh">博客</span></a>
+          </nav>
+          <button id="language-toggle" class="language-toggle" type="button" aria-label="Switch to Chinese">
+            <span class="lang-en">中</span><span class="lang-zh">EN</span>
+          </button>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+            <span></span><span></span>
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+        </div>
       </header>
 
       <main id="main-content">
-        <section id="home" class="hero">
-          <canvas id="flow-canvas" class="hero__canvas" aria-hidden="true"></canvas>
-          <div class="hero__vignette" aria-hidden="true"></div>
+        <section id="about" class="portfolio-profile">
+          <div class="profile-visual reveal">
+            <div class="profile-frame">
+              <span class="profile-frame__corner profile-frame__corner--tl"></span>
+              <span class="profile-frame__corner profile-frame__corner--tr"></span>
+              <span class="profile-frame__corner profile-frame__corner--bl"></span>
+              <span class="profile-frame__corner profile-frame__corner--br"></span>
+              <img src="assets/aiolus.jpg" alt="Aiolus in traditional Chinese clothing" />
+              <div class="profile-frame__scan" aria-hidden="true"></div>
+            </div>
+            <div class="profile-meta"><span>AIOLUS / 01</span><span>THU · AIR</span></div>
+          </div>
 
-          <div class="hero__content">
-            <p class="eyebrow"><span></span> Researcher · Builder · Explorer</p>
-            <h1>
-              Pioneering<br />
-              the future of <em>AI.</em>
-            </h1>
-            <p class="hero__summary">
-              Building intelligent systems that understand, learn, and create — turning frontier
-              research into real-world impact.
+          <div class="profile-copy reveal">
+            <p class="portfolio-kicker"><span></span><span class="lang-en">ABOUT / PROFILE</span><span class="lang-zh">关于 / 个人简介</span></p>
+            <h1><span class="lang-en">Researching<br /><em>self-evolving intelligence.</em></span><span class="lang-zh">探索<br /><em>自进化智能。</em></span></h1>
+            <p class="profile-lede">
+              <span class="lang-en">I study how language models learn, reason, and improve through interaction — and build systems that turn these ideas into reliable intelligence.</span>
+              <span class="lang-zh">我研究语言模型如何通过交互学习、推理与自我改进，并将这些想法构建成可靠的智能系统。</span>
             </p>
-            <div class="hero__actions">
-              <a class="button button--primary" href="#projects">
-                <span>Explore my work</span><i>↗</i>
-              </a>
-              <a class="text-link" href="#about">Discover my story <span>↓</span></a>
+            <div class="profile-facts">
+              <div><span class="fact-label lang-en">Education</span><span class="fact-label lang-zh">教育</span><strong><span class="lang-en">Ph.D. Year 2 · Computer Science, Tsinghua University</span><span class="lang-zh">清华大学计算机系 · 博士二年级</span></strong><small><a href="https://air.tsinghua.edu.cn/en/About_Us/Founding_Dean.htm" target="_blank" rel="noreferrer">Ya-Qin Zhang / 张亚勤 ↗</a></small></div>
+              <div><span class="fact-label lang-en">Research home</span><span class="fact-label lang-zh">研究所在</span><strong><a href="https://www.gensi-thuair.com/portal/about" target="_blank" rel="noreferrer">THU AIR GenSI-Lab</a></strong><small><a href="https://zhouh.github.io/" target="_blank" rel="noreferrer"><span class="lang-en">Leader · Hao Zhou / 周浩 ↗</span><span class="lang-zh">导师 / Leader · 周浩 ↗</span></a></small></div>
+              <div><span class="fact-label lang-en">Industry</span><span class="fact-label lang-zh">实习</span><strong>ByteDance Seed Horizon-RL</strong><small><span class="lang-en">LLM RL · Self-Evolving Agents</span><span class="lang-zh">LLM RL · Self-Evolving Agent</span></small></div>
+              <div><span class="fact-label lang-en">Honors</span><span class="fact-label lang-zh">荣誉</span><strong><span class="lang-en">National Scholarship · Tang Zhongying Scholarship</span><span class="lang-zh">国家奖学金 · 唐仲英奖学金</span></strong><small><span class="lang-en">Graduate Academic Scholarship</span><span class="lang-zh">研究生学业奖学金</span></small></div>
             </div>
           </div>
-
-          <div class="hero__index" aria-hidden="true">
-            <span>01</span>
-            <i></i>
-            <span>04</span>
-          </div>
-
-          <div class="hero__scroll" aria-hidden="true">
-            <span>Scroll</span><i></i>
-          </div>
         </section>
 
-        <section class="signal-strip" aria-label="Highlights">
-          <div><strong>Research</strong><span>Frontier AI systems</span></div>
-          <div><strong>Build</strong><span>Ideas into reality</span></div>
-          <div><strong>Connect</strong><span>Science with impact</span></div>
-          <div class="signal-strip__status"><i></i><span>Open to ambitious collaborations</span></div>
-        </section>
-
-        <section id="projects" class="content-section projects-section">
-          <div class="section-heading reveal">
-            <p class="eyebrow"><span></span> Selected work</p>
-            <h2>Ideas made<br /><em>tangible.</em></h2>
-            <p>Selected projects at the intersection of research, engineering, and impact.</p>
+        <section id="projects" class="portfolio-section portfolio-projects">
+          <div class="portfolio-section__heading reveal">
+            <div><p class="portfolio-kicker"><span></span><span class="lang-en">01 / SELECTED PROJECT</span><span class="lang-zh">01 / 项目精选</span></p><h2><span class="lang-en">Projects</span><span class="lang-zh">项目</span></h2></div>
+            <p><span class="lang-en">Engineering ambitious research into systems that can scale, learn, and ship.</span><span class="lang-zh">把大胆的研究想法，做成能够规模化、持续学习并真正落地的系统。</span></p>
           </div>
-
-          <div class="project-grid">
-            <article class="project-card project-card--featured reveal">
-              <div class="project-card__visual project-card__visual--one" aria-hidden="true">
-                <div class="orbital orbital--one"></div>
-                <div class="orbital orbital--two"></div>
-                <div class="project-core"></div>
-              </div>
-              <div class="project-card__body">
-                <span class="project-card__number">01 / FEATURED RESEARCH</span>
-                <h3>Your flagship research project</h3>
-                <p>A concise statement about the important problem, your breakthrough, and its measurable impact.</p>
-                <a href="#contact">View case study <span>↗</span></a>
-              </div>
-            </article>
-
-            <article class="project-card reveal">
-              <div class="project-card__visual project-card__visual--two" aria-hidden="true">
-                <div class="mesh-sphere"></div>
-              </div>
-              <div class="project-card__body">
-                <span class="project-card__number">02 / INTELLIGENT SYSTEMS</span>
-                <h3>A system that learns and evolves</h3>
-                <p>Show what you built, what made it different, and why the result matters.</p>
-                <a href="#contact">Explore project <span>↗</span></a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="research" class="content-section research-section">
-          <div class="research-orbit" aria-hidden="true">
-            <span></span><span></span><span></span><i></i>
-          </div>
-          <div class="research-copy reveal">
-            <p class="eyebrow"><span></span> Research vision</p>
-            <h2>Intelligence is not a destination.<br /><em>It is a frontier.</em></h2>
-            <p>
-              My work explores how intelligent systems reason, adapt, and interact with the world.
-              Replace this paragraph with the research thesis that only you can own.
-            </p>
-            <a class="text-link" href="#publications">Read the research agenda <span>↗</span></a>
-          </div>
-        </section>
-
-        <section id="publications" class="content-section publications-section">
-          <div class="section-heading section-heading--row reveal">
-            <div>
-              <p class="eyebrow"><span></span> Publications</p>
-              <h2>Selected<br /><em>thinking.</em></h2>
+          <article class="project-feature reveal">
+            <div class="project-feature__visual">
+              <figure><img src="assets/kernelagent-loop.png" alt="KernelAgent agent loop diagram" /><figcaption>KernelAgent / agent loop</figcaption></figure>
+              <figure><img src="assets/kernelagent-scaling.png" alt="KernelAgent performance scaling chart" /><figcaption>KernelAgent / scaling curve</figcaption></figure>
             </div>
-            <p>Peer-reviewed work, preprints, and ideas shaping the next generation of intelligent systems.</p>
-          </div>
+            <div class="project-feature__copy">
+              <div class="project-index">PROJECT 01 <span>·</span> SEED HORIZON-RL</div>
+              <h3>KernelAgent</h3>
+              <p class="project-tagline"><span class="lang-en">Scaling Agentic RL to a 1T LLM with 300 turns, 256K context on 1,024 GPUs over 150 steps.</span><span class="lang-zh">在 1,024 张 GPU 上，用 150 个训练 steps 将 Agentic RL 扩展到 1T LLM、300 轮交互与 256K 上下文。</span></p>
+              <p><span class="lang-en">Work done at Seed Horizon-RL: a highly upgraded <a href="https://cuda-agent.github.io/" target="_blank" rel="noreferrer">CudaAgent</a>, rebuilt with robust reward optimization beyond reward hacking and comprehensively updated RL algorithms.</span><span class="lang-zh">在 Seed Horizon-RL 的工作：这是一个高度升级的 <a href="https://cuda-agent.github.io/" target="_blank" rel="noreferrer">CudaAgent</a>，引入超越 reward hacking 的稳健奖励优化，并系统升级 RL 算法。</span></p>
+              <ul class="project-points"><li><span class="lang-en">Model scale: 200B → 1T</span><span class="lang-zh">模型规模：200B → 1T</span></li><li><span class="lang-en">Context: 128K → 256K</span><span class="lang-zh">上下文：128K → 256K</span></li><li><span class="lang-en">Training fleet: 300 → 1,000 GPUs</span><span class="lang-zh">训练集群：300 → 1,000 张 GPU</span></li><li><span class="lang-en">Merged into <a href="https://seed.bytedance.com/en/seed2_1" target="_blank" rel="noreferrer">Seed 2.1</a>, reaching frontier performance.</span><span class="lang-zh">合入 <a href="https://seed.bytedance.com/en/seed2_1" target="_blank" rel="noreferrer">Seed 2.1</a>，达到世界前沿性能。</span></li></ul>
+            </div>
+          </article>
+        </section>
 
-          <div class="publication-list reveal">
-            <a href="#contact" class="publication-item">
-              <span class="publication-item__year">2026</span>
-              <span class="publication-item__title">Your most important paper title goes here</span>
-              <span class="publication-item__venue">TOP VENUE</span>
-              <span class="publication-item__arrow">↗</span>
-            </a>
-            <a href="#contact" class="publication-item">
-              <span class="publication-item__year">2025</span>
-              <span class="publication-item__title">A second publication demonstrating depth and range</span>
-              <span class="publication-item__venue">CONFERENCE</span>
-              <span class="publication-item__arrow">↗</span>
-            </a>
-            <a href="#contact" class="publication-item">
-              <span class="publication-item__year">2024</span>
-              <span class="publication-item__title">An earlier idea that became a foundation</span>
-              <span class="publication-item__venue">JOURNAL</span>
-              <span class="publication-item__arrow">↗</span>
-            </a>
+        <section id="research" class="portfolio-section portfolio-research">
+          <div class="portfolio-section__heading reveal">
+            <div><p class="portfolio-kicker"><span></span><span class="lang-en">02 / RESEARCH HIGHLIGHT</span><span class="lang-zh">02 / 研究方向</span></p><h2><span class="lang-en">Research</span><span class="lang-zh">研究</span></h2></div>
+            <p><span class="lang-en">First principles, clear abstractions, and methods that stay simple enough to matter.</span><span class="lang-zh">从第一性原理出发，保持清晰抽象，让方法足够简单，也足够有效。</span></p>
+          </div>
+          <div class="research-grid">
+            <div class="research-principles reveal"><span class="research-principles__mark">“</span><h3><span class="lang-en">Research<br /><em>taste.</em></span><span class="lang-zh">研究<br /><em>品味。</em></span></h3><p><span class="lang-en">Driven by first principles, grounded in theory.<br />Simple and effective methodologies.</span><span class="lang-zh">由第一性原理驱动，以理论为根基。<br />追求简单而有效的方法。</span></p><div class="research-stat"><strong>10+</strong><span class="lang-en">first-author papers in TPAMI, ICML, CVPR, AAAI, TNNLS & more</span><span class="lang-zh">篇一作论文发表于 TPAMI、ICML、CVPR、AAAI、TNNLS 等</span></div></div>
+            <div class="research-topics reveal"><p class="fact-label lang-en">Current topics</p><p class="fact-label lang-zh">研究主题</p><div class="topic-list"><span>LLM RL</span><span>Self-Evolving Agent</span><span>Implicit Neural Representation</span><span>Neural Architecture Design</span></div><p class="research-note"><span class="lang-en">I am interested in the loop where a model observes, acts, receives feedback, and becomes better — without losing reliability along the way.</span><span class="lang-zh">我关注这样的循环：模型观察、行动、获得反馈并持续变强，同时始终保持可靠。</span></p></div>
           </div>
         </section>
 
-        <section id="about" class="content-section about-section">
-          <p class="about-section__quote reveal">
-            “The future belongs to those who can see what does not yet exist — and build it.”
-          </p>
-          <div class="about-section__body reveal">
-            <p class="eyebrow"><span></span> About</p>
-            <p>
-              This is where your personal story will connect the dots: your background, the questions
-              you pursue, the teams you have worked with, and the future you intend to create.
-            </p>
-            <a class="button button--ghost" href="#contact"><span>More about me</span><i>↗</i></a>
-          </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-          <div class="contact-section__glow" aria-hidden="true"></div>
-          <p class="eyebrow reveal"><span></span> Start a conversation</p>
-          <h2 class="reveal">Let’s build something<br /><em>that matters.</em></h2>
-          <a class="contact-mail reveal" href="mailto:hello@aiolus.io">
-            hello@aiolus.io <span>↗</span>
-          </a>
-          <footer>
-            <span>© <span id="current-year"></span> AIOLUS</span>
-            <a href="https://images.nasa.gov/" target="_blank" rel="noreferrer">ORBITAL IMAGERY: NASA</a>
-            <a href="#home">Back to top ↑</a>
-          </footer>
-        </section>
+        <footer class="portfolio-footer">
+          <span>© <span id="current-year"></span> AIOLUS</span>
+          <span class="footer-line"></span>
+          <span><span class="lang-en">Researcher · Builder · Explorer</span><span class="lang-zh">研究者 · 构建者 · 探索者</span></span>
+          <a href="#about"><span class="lang-en">Back to top ↑</span><span class="lang-zh">返回顶部 ↑</span></a>
+        </footer>
       </main>
     </div>
   </body>

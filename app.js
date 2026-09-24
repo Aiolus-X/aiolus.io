@@ -8,13 +8,43 @@
   const flowCanvas = document.querySelector("#flow-canvas");
   const menuToggle = document.querySelector(".menu-toggle");
   const primaryNav = document.querySelector(".primary-nav");
+  const languageToggle = document.querySelector("#language-toggle");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let transitionStarted = false;
   let transitionStart = 0;
   let touchStartY = 0;
 
-  document.querySelector("#current-year").textContent = new Date().getFullYear();
+  const currentYear = document.querySelector("#current-year");
+  if (currentYear) currentYear.textContent = new Date().getFullYear();
+
+  function setLanguage(language) {
+    const nextLanguage = language === "zh" ? "zh" : "en";
+    document.documentElement.dataset.language = nextLanguage;
+    document.documentElement.lang = nextLanguage;
+    if (languageToggle) {
+      languageToggle.setAttribute("aria-label", nextLanguage === "en" ? "Switch to Chinese" : "切换到英文");
+    }
+    try {
+      window.localStorage.setItem("aiolus-language", nextLanguage);
+    } catch {
+      // Private browsing and embedded previews may disable localStorage.
+    }
+  }
+
+  if (languageToggle) {
+    let savedLanguage = "en";
+    try {
+      savedLanguage = window.localStorage.getItem("aiolus-language") || "en";
+    } catch {
+      // Keep English as the default when storage is unavailable.
+    }
+    setLanguage(savedLanguage);
+    languageToggle.addEventListener("click", () => {
+      const currentLanguage = document.documentElement.dataset.language || "en";
+      setLanguage(currentLanguage === "en" ? "zh" : "en");
+    });
+  }
 
   function enterSite() {
     if (transitionStarted) return;
@@ -87,6 +117,12 @@
     link.addEventListener("click", () => {
       menuToggle.setAttribute("aria-expanded", "false");
       primaryNav.classList.remove("is-open");
+    });
+  });
+
+  primaryNav.querySelectorAll(".nav-future").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
     });
   });
 
@@ -276,6 +312,7 @@
   }
 
   function setupFlowCanvas() {
+    if (!flowCanvas) return;
     const context = flowCanvas.getContext("2d");
     let width = 0;
     let height = 0;
