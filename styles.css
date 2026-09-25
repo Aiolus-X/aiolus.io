@@ -1669,7 +1669,7 @@ html[data-language="zh"] .lang-en {
 }
 
 .profile-facts a,
-.project-feature__copy a {
+.project-feature a {
   color: inherit;
   text-decoration: none;
   text-underline-offset: 3px;
@@ -1678,8 +1678,8 @@ html[data-language="zh"] .lang-en {
 
 .profile-facts a:hover,
 .profile-facts a:focus-visible,
-.project-feature__copy a:hover,
-.project-feature__copy a:focus-visible {
+.project-feature a:hover,
+.project-feature a:focus-visible {
   color: var(--portfolio-blue);
   text-decoration: underline;
   text-decoration-color: currentColor;
@@ -1717,117 +1717,87 @@ html[data-language="zh"] .lang-en {
 }
 
 .project-feature {
-  display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(310px, 0.88fr);
-  gap: clamp(35px, 6vw, 94px);
-  padding: 19px;
-  border: 1px solid var(--portfolio-border);
-  background: white;
-  box-shadow: 0 22px 50px rgba(17, 65, 102, 0.06);
-}
-
-.project-feature__visual {
-  display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: 12px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   min-width: 0;
-  padding: 12px;
-  background: #eef6fb;
 }
 
-.project-feature__visual figure {
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid #d6e7f2;
-  background: white;
-}
-
-.project-feature__visual figure:first-child {
-  grid-row: span 2;
-}
-
-.project-feature__visual img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.project-feature__visual figcaption {
-  padding: 8px 10px;
-  color: #7590a5;
-  font-family: "Manrope", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.project-feature__copy {
-  align-self: center;
-  padding: 16px 24px 16px 0;
+.project-feature + .project-feature {
+  margin-top: 80px;
+  padding-top: 72px;
+  border-top: 1px solid var(--portfolio-border);
 }
 
 .project-index {
-  margin-bottom: 17px;
+  margin: 0 0 16px;
   color: var(--portfolio-blue);
   font-family: "Manrope", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.13em;
 }
-
-.project-index span { color: #a9bac7; }
 
 .project-feature h3 {
   margin: 0;
   color: var(--portfolio-ink);
   font-family: "Manrope", sans-serif;
-  font-size: clamp(34px, 4vw, 57px);
-  font-weight: 400;
-  letter-spacing: -0.065em;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
 }
 
-.project-feature__copy p {
-  margin: 18px 0 0;
-  color: var(--portfolio-muted);
-  font-size: 14px;
-  line-height: 1.7;
+.project-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px 24px;
 }
 
-.project-feature__copy .project-tagline {
+.project-homepage {
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.project-tagline,
+.project-statement {
+  max-width: 1100px;
+  margin: 0;
   color: var(--portfolio-ink);
-  font-size: 17px;
+  font-size: clamp(20px, 2vw, 26px);
   line-height: 1.55;
 }
 
-.project-points {
-  display: grid;
-  gap: 10px;
-  margin: 24px 0 0;
-  padding: 19px 0 0;
-  border-top: 1px solid var(--portfolio-border);
-  list-style: none;
+.project-tagline {
+  margin-top: 20px;
 }
 
-.project-points li {
-  position: relative;
-  padding-left: 20px;
-  color: #4c6477;
-  font-size: 13px;
-  line-height: 1.5;
+.project-figure {
+  min-width: 0;
+  margin: 0;
 }
 
-.project-points li::before {
-  position: absolute;
-  top: 0.65em;
-  left: 0;
-  width: 7px;
-  height: 7px;
-  border: 1px solid var(--portfolio-blue);
-  border-radius: 50%;
-  content: "";
-  transform: translateY(-50%);
+.project-figure a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.project-figure a:focus-visible {
+  outline: 2px solid var(--portfolio-blue);
+  outline-offset: 5px;
+}
+
+.project-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-figure + .project-statement {
+  margin-top: 28px;
 }
 
 .portfolio-research {
@@ -1951,8 +1921,6 @@ html[data-language="zh"] .lang-en {
   .site-header { height: 72px; }
   .portfolio-section__heading { grid-template-columns: 1fr; gap: 20px; }
   .portfolio-section__heading > p { margin-left: 0; }
-  .project-feature { grid-template-columns: 1fr; }
-  .project-feature__copy { padding: 12px 15px 20px; }
 }
 
 @media (max-width: 680px) {
@@ -1968,8 +1936,6 @@ html[data-language="zh"] .lang-en {
   .portfolio-section, .portfolio-footer { width: min(100% - 40px, 1180px); }
   .portfolio-section { padding: 72px 0 86px; }
   .portfolio-section__heading h2 { font-size: 54px; }
-  .project-feature__visual { grid-template-columns: 1fr; }
-  .project-feature__visual figure:first-child { grid-row: auto; }
   .research-grid { grid-template-columns: 1fr; gap: 30px; }
   .research-principles { padding-right: 0; padding-bottom: 30px; border-right: 0; border-bottom: 1px solid var(--portfolio-border); }
   .portfolio-footer { min-height: 120px; flex-wrap: wrap; gap: 10px 15px; padding: 25px 0; }
@@ -1999,48 +1965,6 @@ html[data-language="zh"] .lang-en {
 .portfolio-section__heading h2 { font-size: clamp(56px, 7.2vw, 96px); line-height: 0.9; }
 .portfolio-section__heading > p { max-width: 475px; margin: 0 0 5px; font-size: 18px; line-height: 1.65; }
 
-.project-feature {
-  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
-  gap: clamp(55px, 8vw, 120px);
-  padding: 0;
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.project-feature__visual {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 0;
-  background: transparent;
-}
-
-.project-feature__visual figure,
-.project-feature__visual figure:first-child {
-  display: block;
-  width: 100%;
-  margin: 0;
-  border: 0;
-  background: transparent;
-}
-
-.project-feature__visual figure img {
-  width: 100%;
-  border: 1px solid #cfe0ec;
-  box-shadow: 0 16px 36px rgba(17, 65, 102, 0.08);
-}
-
-.project-feature__visual figcaption { display: none; }
-.project-feature__copy { padding: 16px 0 0; }
-.project-index { margin-bottom: 23px; font-size: 12px; letter-spacing: 0.13em; }
-.project-feature h3 { font-size: clamp(48px, 5.6vw, 76px); }
-.project-feature__copy p { font-size: 17px; line-height: 1.7; }
-.project-feature__copy .project-tagline { font-size: 22px; line-height: 1.52; }
-.project-points { gap: 14px; margin-top: 29px; padding-top: 0; border-top: 0; }
-.project-points li { padding-left: 24px; font-size: 16px; line-height: 1.55; }
-.project-points li::before { width: 8px; height: 8px; }
-
 .portfolio-research { padding-bottom: 175px; }
 .research-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(65px, 10vw, 155px); }
 .research-principles { padding: 20px 0 0; border-right: 0; }
@@ -2069,8 +1993,6 @@ html[data-language="zh"] .lang-en {
 .portfolio-footer { min-height: 115px; font-size: 12px; }
 
 @media (max-width: 900px) {
-  .project-feature { grid-template-columns: 1fr; gap: 55px; }
-  .project-feature__visual { max-width: 720px; }
   .portfolio-section__heading { display: grid; gap: 22px; }
   .portfolio-section__heading > p { max-width: 600px; margin: 0; }
   .research-grid { grid-template-columns: 1fr; gap: 55px; }
@@ -2084,8 +2006,8 @@ html[data-language="zh"] .lang-en {
   .portfolio-footer { width: min(100% - 40px, 1240px); }
   .portfolio-section { padding: 88px 0 104px; }
   .portfolio-section__heading h2 { font-size: 62px; }
-  .project-feature__copy .project-tagline { font-size: 20px; }
-  .project-feature__copy p { font-size: 16px; }
+  .project-feature { gap: 22px; }
+  .project-feature + .project-feature { margin-top: 56px; padding-top: 48px; }
   .topic-list span { font-size: 22px; }
 }
 
@@ -2346,18 +2268,6 @@ html[data-language="zh"] .portfolio-about .bilingual-stack > .lang-zh {
   line-height: 1.65;
 }
 
-.portfolio-scroll .project-feature__copy p {
-  font-size: 18px;
-}
-
-.portfolio-scroll .project-feature__copy .project-tagline {
-  font-size: 23px;
-}
-
-.portfolio-scroll .project-points li {
-  font-size: 17px;
-}
-
 .portfolio-scroll .research-principles > p,
 .portfolio-scroll .research-note {
   font-size: 19px;
@@ -2397,5 +2307,4 @@ html[data-language="zh"] .portfolio-about .bilingual-stack > .lang-zh {
   .profile-facts .fact-value { padding: 0; }
   .portfolio-scroll .portfolio-section { padding: 82px 0 98px; }
   .portfolio-scroll .portfolio-section__heading h2 { font-size: 34px; }
-  .portfolio-scroll .project-feature__copy .project-tagline { font-size: 20px; }
 }

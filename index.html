@@ -11,7 +11,7 @@
     <title>Aiolus - Welcome to the Era of Aiolution!</title>
     <link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon-aiolus.svg?v=2" />
     <link rel="preload" as="image" href="assets/visuals/aiolus-gold-silver-planet-v5.webp" type="image/webp" />
-    <link rel="stylesheet" href="styles.css?v=20260925-formal-portrait" />
+    <link rel="stylesheet" href="styles.css?v=20260925-project-stories" />
     <script src="app.js" defer></script>
   </head>
   <body class="intro-active">
@@ -170,23 +170,79 @@
 
           <div class="portfolio-scroll">
             <section id="projects" class="portfolio-section portfolio-projects">
-          <div class="portfolio-section__heading reveal">
-            <h2><span class="lang-en">Project Highlights</span><span class="lang-zh">项目精选</span></h2>
-            <p><span class="lang-en">Engineering ambitious research into systems that can scale, learn, and ship.</span><span class="lang-zh">把大胆的研究想法，做成能够规模化、持续学习并真正落地的系统。</span></p>
-          </div>
-          <article class="project-feature reveal">
-            <div class="project-feature__visual">
-              <figure><img src="assets/kernelagent-loop.png" alt="KernelAgent agent loop diagram" /></figure>
-              <figure><img src="assets/kernelagent-scaling.png" alt="KernelAgent performance scaling chart" /></figure>
-            </div>
-            <div class="project-feature__copy">
-              <div class="project-index">PROJECT 01 <span>·</span> SEED HORIZON-RL</div>
-              <h3>KernelAgent</h3>
-              <p class="project-tagline"><span class="lang-en">Scaling Agentic RL to a 1T LLM with 300 turns, 256K context on 1,024 GPUs over 150 steps.</span><span class="lang-zh">在 1,024 张 GPU 上，用 150 个训练 steps 将 Agentic RL 扩展到 1T LLM、300 轮交互与 256K 上下文。</span></p>
-              <p><span class="lang-en">Work done at Seed Horizon-RL: a highly upgraded <a href="https://cuda-agent.github.io/" target="_blank" rel="noreferrer">CudaAgent</a>, rebuilt with robust reward optimization beyond reward hacking and comprehensively updated RL algorithms.</span><span class="lang-zh">在 Seed Horizon-RL 的工作：这是一个高度升级的 <a href="https://cuda-agent.github.io/" target="_blank" rel="noreferrer">CudaAgent</a>，引入超越 reward hacking 的稳健奖励优化，并系统升级 RL 算法。</span></p>
-              <ul class="project-points"><li><span class="lang-en">Model scale: 200B → 1T</span><span class="lang-zh">模型规模：200B → 1T</span></li><li><span class="lang-en">Context: 128K → 256K</span><span class="lang-zh">上下文：128K → 256K</span></li><li><span class="lang-en">Training fleet: 300 → 1,000 GPUs</span><span class="lang-zh">训练集群：300 → 1,000 张 GPU</span></li><li><span class="lang-en">Merged into <a href="https://seed.bytedance.com/en/seed2_1" target="_blank" rel="noreferrer">Seed 2.1</a>, reaching frontier performance.</span><span class="lang-zh">合入 <a href="https://seed.bytedance.com/en/seed2_1" target="_blank" rel="noreferrer">Seed 2.1</a>，达到世界前沿性能。</span></li></ul>
-            </div>
-          </article>
+              <div class="portfolio-section__heading reveal">
+                <h2><span class="lang-en">Project Highlights</span><span class="lang-zh">项目精选</span></h2>
+              </div>
+              <article class="project-feature" aria-labelledby="kernelagent-title">
+                <header class="project-feature__header reveal">
+                  <p class="project-index">SEED HORIZON-RL</p>
+                  <h3 id="kernelagent-title">KernelAgent</h3>
+                  <p class="project-tagline">
+                    <span class="lang-en">Advancing High-performance GPU Kernels Generation with Large-scale Agentic RL System</span>
+                    <span class="lang-zh">通过大规模 Agentic RL 系统推进高性能 GPU Kernel 生成</span>
+                  </p>
+                </header>
+                <figure class="project-figure reveal">
+                  <a href="assets/kernelagent-loop.png" target="_blank" rel="noreferrer">
+                    <img src="assets/kernelagent-loop.png" alt="KernelAgent agent loop diagram" width="2860" height="768" loading="lazy" decoding="async" />
+                  </a>
+                </figure>
+                <p class="project-statement reveal">
+                  <span class="lang-en">Scaling Agentic RL to a 1T LLM with 300 turns, 256K context trained on 1,024 GPUs over 150 steps.</span>
+                  <span class="lang-zh">在 1,024 张 GPU 上进行 150 步训练，将 Agentic RL 扩展至 1T LLM、300 轮交互与 256K 上下文。</span>
+                </p>
+                <figure class="project-figure reveal">
+                  <a href="assets/kernelagent-scaling.png" target="_blank" rel="noreferrer">
+                    <img src="assets/kernelagent-scaling.png" alt="KernelAgent RL scaling curve" width="2660" height="1230" loading="lazy" decoding="async" />
+                  </a>
+                </figure>
+                <p class="project-statement reveal">
+                  <span class="lang-en">Achieving world-leading GPU kernel generation performance.</span>
+                  <span class="lang-zh">取得世界领先的 GPU Kernel 生成性能。</span>
+                </p>
+                <figure class="project-figure reveal">
+                  <a href="assets/kernelagent-performance.png" target="_blank" rel="noreferrer">
+                    <img src="assets/kernelagent-performance.png" alt="KernelAgent GPU kernel generation performance compared with other models" width="3803" height="1460" loading="lazy" decoding="async" />
+                  </a>
+                </figure>
+              </article>
+
+              <article class="project-feature" aria-labelledby="flex-title">
+                <header class="project-feature__header reveal">
+                  <p class="project-index">FLEX</p>
+                  <div class="project-title-row">
+                    <h3 id="flex-title">Forward Learning from Experience</h3>
+                    <a class="project-homepage" href="https://flex-gensi-thuair.github.io/" target="_blank" rel="noreferrer"><span class="lang-en">Project homepage ↗</span><span class="lang-zh">项目主页 ↗</span></a>
+                  </div>
+                  <p class="project-tagline">
+                    <span class="lang-en">FLEX introduces a new learning paradigm for AI, fundamentally overturning the traditional model-training framework based on gradient backpropagation. It enables agents to continuously self-evolve through experience, taking a step toward artificial general intelligence (AGI).</span>
+                    <span class="lang-zh">FLEX 是 AI 全新学习范式，彻底颠覆了依赖梯度反向传播的传统模型训练框架，让智能体通过“经验”进行持续的自我进化，朝着通用人工智能（AGI）迈进了一步。</span>
+                  </p>
+                </header>
+                <figure class="project-figure reveal">
+                  <a href="assets/FLEX-loop.png" target="_blank" rel="noreferrer">
+                    <img src="assets/FLEX-loop.png" alt="FLEX iterative refinement and experience library loop" width="1964" height="564" loading="lazy" decoding="async" />
+                  </a>
+                </figure>
+                <p class="project-statement reveal">
+                  <span class="lang-en">Continuous self-evolution during deployment.</span>
+                  <span class="lang-zh">在部署中持续自进化。</span>
+                </p>
+                <figure class="project-figure reveal">
+                  <a href="assets/FLEX-performance.png" target="_blank" rel="noreferrer">
+                    <img src="assets/FLEX-performance.png" alt="FLEX performance on mathematics, chemistry, and biology tasks" width="1792" height="602" loading="lazy" decoding="async" />
+                  </a>
+                </figure>
+                <p class="project-statement reveal">
+                  <span class="lang-en">Knowledge transfer across agents to build collective intelligence.</span>
+                  <span class="lang-zh">智能体之间的知识迁移，构建群体智能。</span>
+                </p>
+                <figure class="project-figure reveal">
+                  <a href="assets/FLEX-3.png" target="_blank" rel="noreferrer">
+                    <img src="assets/FLEX-3.png" alt="Agents learn, inherit, and apply shared experience" width="2008" height="724" loading="lazy" decoding="async" />
+                  </a>
+                </figure>
+              </article>
             </section>
 
             <section id="research" class="portfolio-section portfolio-research">
