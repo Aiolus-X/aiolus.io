@@ -11,7 +11,7 @@
     <title>Welcome to the Era of Aiolution!</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='white' d='M32 4 9 55h12l11-26 12 26h12L32 4Z'/%3E%3C/svg%3E" />
     <link rel="preload" as="image" href="assets/visuals/aiolus-gold-silver-planet-v5.webp" type="image/webp" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260925-profile" />
     <script src="app.js" defer></script>
   </head>
   <body class="intro-active">
@@ -81,7 +81,7 @@
 
     <div id="site" class="site" aria-hidden="true">
       <header class="site-header">
-        <a class="site-logo" href="#home" aria-label="Aiolus home">
+        <a class="site-logo" href="#about" aria-label="Aiolus home">
           <svg class="site-logo__emblem" viewBox="0 0 954 442" aria-hidden="true">
             <defs>
               <mask id="nav-emblem-mask" maskUnits="userSpaceOnUse" style="mask-type: luminance">
@@ -112,7 +112,7 @@
 
       <main id="main-content">
         <div class="portfolio-layout">
-          <aside class="portfolio-sidebar">
+          <section id="about" class="portfolio-about" aria-labelledby="about-title">
             <div class="profile-visual reveal">
               <div class="profile-frame">
                 <span class="profile-frame__corner profile-frame__corner--tl"></span>
@@ -122,29 +122,37 @@
                 <img src="assets/aiolus.jpg" alt="Aiolus in traditional Chinese clothing" />
                 <div class="profile-frame__scan" aria-hidden="true"></div>
               </div>
-              <p class="profile-motto"><span class="lang-en">Endless night with no dawn in sight,<br />burning myself as the guiding light.</span><span class="lang-zh">长夜无明，执我为炬</span></p>
+              <p class="profile-motto"><span class="lang-en">Endless night with no dawn in sight, burning myself as the guiding light.</span><span class="lang-zh">长夜无明，执我为炬</span></p>
             </div>
-          </aside>
-
-          <div class="portfolio-scroll">
-            <section id="about" class="portfolio-panel portfolio-about">
               <div class="profile-copy reveal">
-                <p class="portfolio-kicker"><span></span><span class="lang-en">ABOUT ME</span><span class="lang-zh">关于我</span></p>
-                <h1 class="about-title"><span class="lang-en">About Me</span><span class="lang-zh">关于我</span></h1>
+                <h1 id="about-title" class="about-title"><span class="lang-en">About Me</span><span class="lang-zh">关于我</span></h1>
                 <p class="profile-lede">
                   <span class="lang-en">I study how language models learn, reason, and improve through interaction, and build systems that turn these ideas into reliable intelligence.</span>
                   <span class="lang-zh">我研究语言模型如何通过交互学习、推理与自我改进，并将这些想法构建成可靠的智能系统。</span>
                 </p>
                 <ul class="profile-facts">
-                  <li><span class="fact-label lang-en">Education</span><span class="fact-label lang-zh">教育</span><span class="fact-value"><span class="lang-en">Ph.D. Year 2 · Computer Science, Tsinghua University</span><span class="lang-zh">清华大学计算机系 · 博士二年级</span></span></li>
-                  <li><span class="fact-label lang-en">Lab</span><span class="fact-label lang-zh">实验室</span><span class="fact-value"><a href="https://www.gensi-thuair.com/portal/about" target="_blank" rel="noreferrer">THU AIR GenSI-Lab</a> · <span class="lang-en">Advisor <a href="https://air.tsinghua.edu.cn/en/About_Us/Founding_Dean.htm" target="_blank" rel="noreferrer">Ya-Qin Zhang</a>; Leader <a href="https://zhouh.github.io/" target="_blank" rel="noreferrer">Hao Zhou</a> ↗</span><span class="lang-zh">包括导师：<a href="https://air.tsinghua.edu.cn/en/About_Us/Founding_Dean.htm" target="_blank" rel="noreferrer">张亚勤</a>、Leader：<a href="https://zhouh.github.io/" target="_blank" rel="noreferrer">周浩</a> ↗</span></span></li>
-                  <li><span class="fact-label lang-en">Internship</span><span class="fact-label lang-zh">实习</span><span class="fact-value">ByteDance Seed Horizon-RL</span></li>
-                  <li><span class="fact-label lang-en">Research</span><span class="fact-label lang-zh">研究</span><span class="fact-value"><span class="lang-en">LLM RL · Self-Evolving Agents</span><span class="lang-zh">LLM RL · Self-Evolving Agent</span></span></li>
-                  <li><span class="fact-label lang-en">Honors</span><span class="fact-label lang-zh">荣誉</span><span class="fact-value"><span class="lang-en">National Scholarship, Graduate Academic Scholarship, and Tang Zhongying Scholarship</span><span class="lang-zh">国家奖学金、研究生学业奖学金、唐仲英奖学金</span></span></li>
+                  <li>
+                    <span class="fact-label lang-en">Education:</span><span class="fact-label lang-zh">教育：</span>
+                    <span class="lang-en">2nd-year Ph.D., <abbr title="Computer Science, Tsinghua University">Tsinghua CS</abbr> · Advisor: <a href="https://air.tsinghua.edu.cn/en/About_Us/Founding_Dean.htm" target="_blank" rel="noreferrer">Ya-Qin Zhang</a></span>
+                    <span class="lang-zh">清华大学计算机系博士二年级 · 导师：<a href="https://air.tsinghua.edu.cn/en/About_Us/Founding_Dean.htm" target="_blank" rel="noreferrer">张亚勤</a></span>
+                  </li>
+                  <li>
+                    <span class="fact-label lang-en">Lab:</span><span class="fact-label lang-zh">实验室：</span>
+                    <a href="https://www.gensi-thuair.com/portal/about" target="_blank" rel="noreferrer">THU AIR GenSI-Lab</a> · Leader:
+                    <a href="https://zhouh.github.io/" target="_blank" rel="noreferrer"><span class="lang-en">Hao Zhou</span><span class="lang-zh">周浩</span></a>
+                  </li>
+                  <li><span class="fact-label lang-en">Internship:</span><span class="fact-label lang-zh">实习：</span> ByteDance Seed Horizon-RL</li>
+                  <li><span class="fact-label lang-en">Research:</span><span class="fact-label lang-zh">研究：</span> LLM RL · Self-Evolving Agent</li>
+                  <li>
+                    <span class="fact-label lang-en">Honors:</span><span class="fact-label lang-zh">荣誉：</span>
+                    <span class="lang-en">National · Graduate Academic · Tang Zhongying Scholarships</span>
+                    <span class="lang-zh">国家奖学金 · 研究生学业奖学金 · 唐仲英奖学金</span>
+                  </li>
                 </ul>
               </div>
-            </section>
+          </section>
 
+          <div class="portfolio-scroll">
             <section id="projects" class="portfolio-section portfolio-projects">
           <div class="portfolio-section__heading reveal">
             <div><p class="portfolio-kicker"><span></span><span class="lang-en">01 / SELECTED PROJECT</span><span class="lang-zh">01 / 项目精选</span></p><h2><span class="lang-en">Projects</span><span class="lang-zh">项目</span></h2></div>
