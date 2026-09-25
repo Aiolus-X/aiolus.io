@@ -11,7 +11,7 @@
     <title>Aiolus - Welcome to the Era of Aiolution!</title>
     <link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon-aiolus.svg?v=1" />
     <link rel="preload" as="image" href="assets/visuals/aiolus-gold-silver-planet-v5.webp" type="image/webp" />
-    <link rel="stylesheet" href="styles.css?v=20260925-profile-details" />
+    <link rel="stylesheet" href="styles.css?v=20260925-affiliations" />
     <script src="app.js" defer></script>
   </head>
   <body class="intro-active">
@@ -113,19 +113,17 @@
       <main id="main-content">
         <div class="portfolio-layout">
           <section id="about" class="portfolio-about" aria-labelledby="about-title">
-            <div class="profile-visual reveal">
-              <div class="profile-frame">
-                <span class="profile-frame__corner profile-frame__corner--tl"></span>
-                <span class="profile-frame__corner profile-frame__corner--tr"></span>
-                <span class="profile-frame__corner profile-frame__corner--bl"></span>
-                <span class="profile-frame__corner profile-frame__corner--br"></span>
-                <img src="assets/aiolus.jpg" alt="Aiolus in traditional Chinese clothing" />
-                <div class="profile-frame__scan" aria-hidden="true"></div>
-              </div>
-              <p class="profile-motto"><span class="lang-en"><span class="motto-line">Endless night with no dawn in sight,</span><span class="motto-line">burning myself as the guiding light.</span></span><span class="lang-zh">长夜无明，执我为炬</span></p>
+            <div class="profile-frame reveal">
+              <span class="profile-frame__corner profile-frame__corner--tl"></span>
+              <span class="profile-frame__corner profile-frame__corner--tr"></span>
+              <span class="profile-frame__corner profile-frame__corner--bl"></span>
+              <span class="profile-frame__corner profile-frame__corner--br"></span>
+              <img src="assets/aiolus.jpg" alt="Aiolus in traditional Chinese clothing" />
+              <div class="profile-frame__scan" aria-hidden="true"></div>
             </div>
+            <p class="profile-motto reveal"><span class="lang-en"><span class="motto-line">Endless night with no dawn in sight,</span><span class="motto-line">Burning myself as the guiding light.</span></span><span class="lang-zh">长夜无明，执我为炬</span></p>
             <div class="profile-copy reveal">
-              <h1 id="about-title" class="about-title">Zhicheng Cai (Aiolus)</h1>
+              <h1 id="about-title" class="about-title"><span class="lang-en">Zhicheng Cai (Aiolus)</span><span class="lang-zh">蔡志成（Aiolus）</span></h1>
               <p class="profile-lede">
                 <span class="lang-en">I study how intelligence continuously learns, reasons, and improves through exploration. My vision is to build autonomous intelligence that amplifies human potential and expands the frontier of civilization.</span>
                 <span class="lang-zh">我研究智能如何通过探索持续学习、推理与自我改进。我的愿景是构建自主智能，释放人类潜能，拓展文明边界。</span>
@@ -134,29 +132,31 @@
                 <li>
                   <span class="fact-label"><span class="lang-en">Education</span><span class="lang-zh">教育</span></span>
                   <span class="fact-value">
-                    <span class="lang-en">PhD @ <abbr title="Computer Science, Tsinghua University">Tsinghua CS</abbr> · Advisor: <a href="https://air.tsinghua.edu.cn/en/About_Us/Founding_Dean.htm" target="_blank" rel="noreferrer">Ya-Qin Zhang</a></span>
+                    <img class="affiliation-mark" src="assets/affiliations/tsinghua.ico" alt="" width="24" height="24" aria-hidden="true" />
+                    <span class="lang-en">PhD @ <abbr title="Computer Science, Tsinghua University">Tsinghua CS</abbr> · Supervisor: <a href="https://air.tsinghua.edu.cn/en/About_Us/Founding_Dean.htm" target="_blank" rel="noreferrer">Ya-Qin Zhang</a></span>
                     <span class="lang-zh">清华大学计算机系博士 · 导师：<a href="https://air.tsinghua.edu.cn/en/About_Us/Founding_Dean.htm" target="_blank" rel="noreferrer">张亚勤</a></span>
                   </span>
                 </li>
                 <li>
                   <span class="fact-label"><span class="lang-en">Laboratory</span><span class="lang-zh">实验室</span></span>
                   <span class="fact-value">
-                    <a href="https://www.gensi-thuair.com/portal/about" target="_blank" rel="noreferrer"><span class="lang-en">THU-AIR GenSI-Lab</span><span class="lang-zh">清华大学智能产业研究院 GenSI实验室</span></a>
-                    · <span class="lang-en">Leader:</span><span class="lang-zh">Leader：</span>
+                    <img class="affiliation-mark" src="assets/affiliations/gensi.svg" alt="" width="24" height="24" aria-hidden="true" />
+                    <a href="https://www.gensi-thuair.com/" target="_blank" rel="noreferrer"><span class="lang-en">THU-AIR GenSI-Lab</span><span class="lang-zh">清华大学智能产业研究院 GenSI实验室</span></a>
+                    · <span class="lang-en">Supervisor:</span><span class="lang-zh">导师：</span>
                     <a href="https://zhouh.github.io/" target="_blank" rel="noreferrer"><span class="lang-en">Hao Zhou</span><span class="lang-zh">周浩</span></a>
                   </span>
                 </li>
                 <li>
                   <span class="fact-label"><span class="lang-en">Internship</span><span class="lang-zh">实习</span></span>
-                  <span class="fact-value"><span class="lang-en">ByteDance</span><span class="lang-zh">字节跳动</span> Seed Horizon-RL</span>
+                  <span class="fact-value"><img class="affiliation-mark" src="assets/affiliations/seed.ico" alt="" width="24" height="24" aria-hidden="true" /> <span class="lang-en">ByteDance</span><span class="lang-zh">字节跳动</span> Seed Horizon-RL · <span class="lang-en">Researcher</span><span class="lang-zh">研究员</span></span>
                 </li>
                 <li>
                   <span class="fact-label"><span class="lang-en">Research</span><span class="lang-zh">研究</span></span>
-                  <span class="fact-value"><span class="lang-en">Next-Generation LLM RL · Self-Evolving Agent</span><span class="lang-zh">下一代大模型强化学习，自进化智能体</span></span>
+                  <span class="fact-value"><span class="lang-en">Next-Generation RL Systems · Self-Evolving Agent</span><span class="lang-zh">下一代强化学习系统，自进化智能体</span></span>
                 </li>
                 <li>
                   <span class="fact-label"><span class="lang-en">Honors</span><span class="lang-zh">荣誉</span></span>
-                  <span class="fact-value"><span class="lang-en"><span class="honor-name">National Scholarship</span> · <span class="honor-name">First-Class Graduate Academic Scholarship</span> · <span class="honor-name">Tang Zhongying Scholarship</span> · <span class="honor-name">Ranked 1st in my major</span></span><span class="lang-zh">国家奖学金 · 研究生学业一等奖学金 · 唐仲英奖学金 · 专业第一</span></span>
+                  <span class="fact-value"><span class="lang-en"><span class="honor-name">National Scholarship</span> · <span class="honor-name">First-Class Graduate Academic Scholarship</span> · <span class="honor-name">Tang Zhongying Scholarship</span> · <span class="honor-name">Ranked #1</span></span><span class="lang-zh">国家奖学金 · 研究生学业一等奖学金 · 唐仲英奖学金 · Ranked #1</span></span>
                 </li>
               </ul>
             </div>

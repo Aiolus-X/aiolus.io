@@ -1560,7 +1560,10 @@ html[data-language="zh"] .lang-en {
 }
 
 .profile-frame {
+  grid-column: 1;
+  grid-row: 1;
   position: relative;
+  min-height: 0;
   padding: 10px;
   border: 1px solid rgba(21, 119, 212, 0.45);
   background: linear-gradient(145deg, rgba(238, 247, 255, 0.9), rgba(255, 255, 255, 0.8));
@@ -1589,9 +1592,11 @@ html[data-language="zh"] .lang-en {
 }
 
 .profile-frame img {
+  position: absolute;
+  inset: 10px;
   display: block;
-  width: 100%;
-  aspect-ratio: 0.77;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
   object-fit: cover;
   object-position: center 19%;
   filter: saturate(0.86) contrast(1.04);
@@ -2079,9 +2084,13 @@ html[data-language="zh"] .lang-en {
 }
 
 /* Final profile hierarchy adjustments. */
+.site-header {
+  --nav-font-size: 22px;
+}
+
 .site-logo {
   gap: 12px;
-  font-size: 22px;
+  font-size: var(--nav-font-size);
   letter-spacing: 0.18em;
 }
 
@@ -2093,6 +2102,24 @@ html[data-language="zh"] .lang-en {
 
 .site-logo > span {
   display: inline;
+}
+
+.site-header .primary-nav a,
+.site-header .language-toggle {
+  font-size: var(--nav-font-size);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.site-header .primary-nav {
+  gap: clamp(20px, 2.5vw, 36px);
+}
+
+.site-header .language-toggle {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 9px;
+  font-weight: 500;
 }
 
 @media (max-width: 900px) {
@@ -2112,12 +2139,12 @@ html[data-language="zh"] .lang-en {
   }
 
   .site-header .primary-nav.is-open { display: flex; }
-  .site-header .primary-nav a { font-size: 16px; }
   .site-header .menu-toggle span:not(.sr-only) { background: var(--portfolio-ink); }
 }
 
 @media (max-width: 680px) {
-  .site-logo { gap: 8px; font-size: 19px; }
+  .site-header { --nav-font-size: 19px; }
+  .site-logo { gap: 8px; }
   .site-logo__emblem { width: 58px; height: 34px; }
 }
 
@@ -2129,22 +2156,27 @@ html[data-language="zh"] .lang-en {
 }
 
 .portfolio-about {
+  --profile-royal-blue: #173b96;
   display: grid;
   grid-template-columns: clamp(280px, 23vw, 320px) minmax(0, 1fr);
-  gap: clamp(28px, 3.5vw, 48px);
-  align-items: start;
+  column-gap: clamp(28px, 3.5vw, 48px);
+  row-gap: 24px;
+  align-items: stretch;
   padding: 0 0 88px;
   scroll-margin-top: 112px;
 }
 
-.profile-visual,
 .profile-copy {
+  grid-column: 2;
+  grid-row: 1;
   min-width: 0;
   margin: 0;
 }
 
 .profile-motto {
-  margin: 24px 0 0;
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
   color: #245f8e;
   font-family: Georgia, "Songti SC", "STSong", serif;
   font-size: 18px;
@@ -2208,14 +2240,17 @@ html[data-language="zh"] .profile-motto {
 
 .profile-facts .fact-label {
   display: grid;
-  place-items: center;
+  align-items: center;
+  justify-items: start;
   width: 144px;
   height: 44px;
   margin: 0;
-  border: 1px solid #c8dcef;
-  border-radius: 6px;
-  background: #edf5fc;
-  color: #245f8e;
+  padding-left: 16px;
+  border: 0;
+  border-left: 1px solid rgba(23, 59, 150, 0.3);
+  border-radius: 0;
+  background: transparent;
+  color: var(--profile-royal-blue);
   font: inherit;
   font-size: 18px;
   font-weight: 600;
@@ -2227,6 +2262,15 @@ html[data-language="zh"] .profile-motto {
   display: block;
   min-width: 0;
   padding: 6px 0;
+}
+
+.affiliation-mark {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
+  object-fit: contain;
+  vertical-align: -4px;
 }
 
 .profile-facts abbr {
@@ -2283,12 +2327,23 @@ html[data-language="zh"] .profile-motto {
 @media (max-width: 1000px) {
   .portfolio-about {
     grid-template-columns: 1fr;
-    gap: 40px;
+    row-gap: 24px;
   }
 
-  .profile-visual {
+  .profile-frame,
+  .profile-motto {
     width: min(100%, 320px);
-    margin: 0 auto;
+    justify-self: center;
+  }
+
+  .profile-frame {
+    aspect-ratio: 0.77;
+  }
+
+  .profile-copy {
+    grid-column: 1;
+    grid-row: 3;
+    padding-top: 16px;
   }
 }
 
