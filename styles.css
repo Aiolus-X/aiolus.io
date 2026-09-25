@@ -2080,30 +2080,57 @@ html[data-language="zh"] .lang-en {
 
 /* Final profile hierarchy adjustments. */
 .site-logo {
-  font-size: 14px;
-  letter-spacing: 0.22em;
+  gap: 12px;
+  font-size: 22px;
+  letter-spacing: 0.18em;
 }
 
 .site-logo__emblem {
-  width: 58px;
-  height: 35px;
+  width: 76px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.site-logo > span {
+  display: inline;
+}
+
+@media (max-width: 900px) {
+  .site-header .primary-nav {
+    position: absolute;
+    inset: 100% 20px auto;
+    display: none;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid var(--portfolio-border);
+    background: #f8fbfe;
+    box-shadow: 0 18px 36px rgba(20, 77, 122, 0.11);
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .site-header .primary-nav.is-open { display: flex; }
+  .site-header .primary-nav a { font-size: 16px; }
+  .site-header .menu-toggle span:not(.sr-only) { background: var(--portfolio-ink); }
 }
 
 @media (max-width: 680px) {
-  .site-logo { font-size: 13px; }
-  .site-logo__emblem { width: 50px; height: 31px; }
+  .site-logo { gap: 8px; font-size: 19px; }
+  .site-logo__emblem { width: 58px; height: 34px; }
 }
 
 /* The portrait and biography share the first section; other sections follow below. */
 .portfolio-layout {
-  width: min(1280px, calc(100% - 64px));
+  width: min(1380px, calc(100% - 64px));
   margin: 0 auto;
   padding-top: 144px;
 }
 
 .portfolio-about {
   display: grid;
-  grid-template-columns: clamp(220px, 20vw, 280px) minmax(0, 1fr);
+  grid-template-columns: clamp(280px, 23vw, 320px) minmax(0, 1fr);
   gap: clamp(28px, 3.5vw, 48px);
   align-items: start;
   padding: 0 0 88px;
@@ -2123,8 +2150,12 @@ html[data-language="zh"] .lang-en {
   font-size: 18px;
   font-style: italic;
   line-height: 1.6;
-  text-align: center;
-  text-wrap: balance;
+  text-align: left;
+}
+
+.motto-line {
+  display: block;
+  white-space: nowrap;
 }
 
 html[data-language="zh"] .profile-motto {
@@ -2155,37 +2186,55 @@ html[data-language="zh"] .profile-motto {
 }
 
 .profile-facts {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
   margin: 0;
-  padding-left: 22px;
+  padding: 0;
   color: var(--portfolio-ink);
-  list-style: disc;
-  font-size: 18px;
-  line-height: 1.75;
+  list-style: none;
+  font-size: 20px;
+  line-height: 1.6;
 }
 
 .profile-facts li {
-  display: list-item;
-  margin: 0 0 14px;
-  padding-left: 4px;
-}
-
-.profile-facts li::marker {
-  color: var(--portfolio-blue);
+  display: grid;
+  grid-template-columns: 144px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  margin: 0;
+  padding: 0;
 }
 
 .profile-facts .fact-label {
-  display: inline;
+  display: grid;
+  place-items: center;
+  width: 144px;
+  height: 44px;
   margin: 0;
-  color: inherit;
+  border: 1px solid #c8dcef;
+  border-radius: 6px;
+  background: #edf5fc;
+  color: #245f8e;
   font: inherit;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: normal;
   text-transform: none;
 }
 
+.profile-facts .fact-value {
+  display: block;
+  min-width: 0;
+  padding: 6px 0;
+}
+
 .profile-facts abbr {
   text-decoration: none;
+}
+
+@media (min-width: 681px) {
+  .honor-name { white-space: nowrap; }
 }
 
 .portfolio-scroll .portfolio-section,
@@ -2203,7 +2252,10 @@ html[data-language="zh"] .profile-motto {
 }
 
 .portfolio-scroll .portfolio-section__heading h2 {
-  font-size: clamp(58px, 7vw, 88px);
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
 }
 
 .portfolio-scroll .portfolio-section__heading > p {
@@ -2228,14 +2280,14 @@ html[data-language="zh"] .profile-motto {
   font-size: 19px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .portfolio-about {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
   .profile-visual {
-    width: min(100%, 280px);
+    width: min(100%, 320px);
     margin: 0 auto;
   }
 }
@@ -2249,7 +2301,10 @@ html[data-language="zh"] .profile-motto {
   .portfolio-about { padding-bottom: 64px; }
   .about-title { font-size: 34px; }
   .profile-lede { font-size: 18px; }
+  .profile-facts { font-size: 19px; gap: 18px; }
+  .profile-facts li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .profile-facts .fact-value { padding: 0; }
   .portfolio-scroll .portfolio-section { padding: 82px 0 98px; }
-  .portfolio-scroll .portfolio-section__heading h2 { font-size: 62px; }
+  .portfolio-scroll .portfolio-section__heading h2 { font-size: 34px; }
   .portfolio-scroll .project-feature__copy .project-tagline { font-size: 20px; }
 }
